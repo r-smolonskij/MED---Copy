@@ -1,0 +1,122 @@
+<ion-app>
+  <!--Latvian menu-->
+  <ion-menu side="start" menuId="latvianMenu" [disabled]="!isLatvian">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Izvēlne</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/home']" detail>
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label>Sākums</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/search']" detail>
+            <ion-icon name="search" slot="start"></ion-icon>
+            <ion-label>Meklēšana</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/fields']" detail>
+            <ion-icon name="medkit" slot="start"></ion-icon>
+            <ion-label>Medicīnas nozares</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/info']" detail>
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>Informācijas par MED</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/matching-game']" detail>
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>Matching Game</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+            <ion-item [routerLink]="['/writing-game']" detail>
+              <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+              <ion-label>Writing Game</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        <ion-item>
+          <ion-icon name="globe" slot="start"></ion-icon>
+          <ion-label>Valoda</ion-label>
+          <ion-select *ngIf="isLatvian ; else notLV" value="latvian" okText="OK" cancelText="Atcelt"
+            (ionChange)="changeLanguage(); onMenuClicked()">
+            <ion-select-option value="latvian">Latviešu</ion-select-option>
+            <ion-menu-toggle>
+              <ion-select-option value="english">English</ion-select-option>
+            </ion-menu-toggle>
+          </ion-select>
+          <ng-template #notLV>
+            Brr
+          </ng-template>
+
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <!--English menu-->
+
+
+  <ion-menu side="start" menuId="englishMenu" [disabled]="isLatvian">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/home']" detail>
+            <ion-icon name="home" slot="start"></ion-icon>
+            <ion-label>Home</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/search']" detail>
+            <ion-icon name="search" slot="start"></ion-icon>
+            <ion-label>Search</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/fields']" detail>
+            <ion-icon name="medkit" slot="start"></ion-icon>
+            <ion-label>Fields of Medicine</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-menu-toggle>
+          <ion-item [routerLink]="['/info']" detail>
+            <ion-icon name="information-circle-outline" slot="start"></ion-icon>
+            <ion-label>Info about MED</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+        <ion-item>
+          <ion-icon name="globe" slot="start"></ion-icon>
+          <ion-label>Language</ion-label>
+          <ion-select value="english" *ngIf="!isLatvian ; else isLV" okText="Okay" cancelText="Dismiss"
+            (ionChange)="changeLanguage(); onMenuClicked()">
+            <ion-menu-toggle>
+              <ion-select-option value="latvian">Latviešu</ion-select-option>
+            </ion-menu-toggle>
+            <ion-select-option value="english">English</ion-select-option>
+          </ion-select>
+          <ng-template #isLV>
+            bRRR
+          </ng-template>
+
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+
+  <ion-router-outlet main></ion-router-outlet>
+</ion-app>

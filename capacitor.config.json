@@ -1,0 +1,8 @@
+{
+  "appId": "com.med.ionic",
+  "appUrl": "",
+  "appName": "MED",
+  "bundledWebRuntime": false,
+  "npmClient": "npm",
+  "webDir": "www"
+}

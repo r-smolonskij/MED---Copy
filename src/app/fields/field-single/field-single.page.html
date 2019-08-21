@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/fields"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ isLatvian ?  field.titleLV : field.titleENG }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid fixed>
+    <ion-searchbar #mySingleFieldSearchbar [formControl]="searchControl" (ionChange)="onSearchInput()"
+      placeholder="{{isLatvian ? 'Meklēt' : 'Search'}}"></ion-searchbar>
+
+    <div>
+      <div *ngIf="searching" class="spinner-container" margin>
+        <ion-spinner></ion-spinner> {{ isLatvian ?  'Notiek meklēšana' : 'Searching'}}
+      </div>
+      <div *ngIf="foundedWords.length > 0; else noFoundedWords ">
+        <ion-list>
+          <ion-item detail *ngFor="let word of foundedWords" [routerLink]="['/', 'word-single', word.id]">
+            {{ isLatvian ?  word.wordLV : word.wordENG }}
+          </ion-item>
+        </ion-list>
+      </div>
+      <ng-template #noFoundedWords>
+        <h2 text-center margin *ngIf="!searching"> {{ isLatvian ?  'Nav atrasti rezultāti!' : 'No results found!' }}
+        </h2>
+      </ng-template>
+    </div>
+    <!---
+    <ion-row>
+      <ion-col size="10" offset="1" margin text-justify>
+        {{isLatvian ? field.aboutLV : field.aboutENG}}
+        <div *ngIf="foundedWords.length > 0; ">
+          <ion-list>
+            <ion-item detail *ngFor="let word of foundedWords" [routerLink]="['/', 'word-single', word.id]">
+              {{ isLatvian ?  word.wordLV : word.wordENG }} 
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-col>
+    </ion-row>-->
+  </ion-grid>
+</ion-content>

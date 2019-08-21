@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/search"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{isLatvian ? word.wordLV : word.wordENG}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title><b>{{isLatvian ? word.wordLV : word.wordENG }}</b></ion-card-title>
+      <ion-card-subtitle><b><i>{{wordType}}</i></b></ion-card-subtitle>
+      <!--<ion-card-subtitle><b><i>{{isLatvian ? 'Tips' : 'Type'}}</i></b></ion-card-subtitle>-->
+    </ion-card-header>
+    <ion-card-content>
+      <div *ngIf='isLatvian; else noLatvian'>
+        <span>
+          <div (ionClick)="translationSound()" (click)="translationSound()" class='language'>
+            <ion-icon name="volume-high"> </ion-icon> Latviski
+          </div>
+          <h3>
+            <b>LV:</b> <u>{{word.wordLV}}</u>
+          </h3>
+        </span>
+        <br>
+        <br>
+        <span>
+          <div (ionClick)="translationSound()" (click)="translationSound()" class='language'>
+            <ion-icon name="volume-high"></ion-icon> Angliski
+          </div>
+          <h3>
+            <b>ENG:</b> <u>{{word.wordENG}}</u>
+          </h3>
+        </span>
+      </div>
+      <ng-template #noLatvian>
+        <div>
+          <span>
+            <div (ionClick)="translationSound()" (click)="translationSound()" class='language'>
+              <ion-icon name="volume-high"> </ion-icon> English
+            </div>
+            <h3>
+              <b>ENG:</b> <u>{{word.wordENG}}</u>
+            </h3>
+          </span>
+          <br>
+          <span>
+            <div (ionClick)="translationSound()" (click)="translationSound()" class='language'>
+              <ion-icon name="volume-high"> </ion-icon> Latvian
+            </div>
+            <h3>
+              <b>LV:</b> <u>{{word.wordLV}}</u>
+            </h3>
+          </span>
+        </div>
+      </ng-template>
+
+      <br>
+
+      <ion-row>
+        <ion-col size="6" *ngFor="let field of allFields">
+          <ion-button size="small" shape="round" fill="outline" [routerLink]="['/','field', field.id ]">
+            <ion-text color="primary">
+              <h6>{{ isLatvian ? field.titleLV : field.titleENG}}</h6>
+            </ion-text>
+            <ion-icon name="open" fill="outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

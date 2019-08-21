@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ isLatvian ?  'Medicīnas nozares' : 'Fields of Medicine'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-searchbar #myFieldsSearchbar [formControl]="searchControl" (ionChange)="onSearchInput()"
+    placeholder="{{isLatvian ? 'Meklēt medicīnas nozari' : 'Search field of medicine'}}"></ion-searchbar>
+
+  <div>
+    <div *ngIf="searching" class="spinner-container" margin>
+      <ion-spinner ></ion-spinner> {{ isLatvian ?  'Notiek meklēšana' : 'Searching'}} 
+    </div>
+    <div *ngIf="foundedFields.length > 0; else noFoundedFields ">
+      <ion-list>
+        <ion-item detail *ngFor="let field of foundedFields" [routerLink]="['/', 'field', field.id]">
+          {{ isLatvian ?  field.titleLV : field.titleENG }} 
+        </ion-item>
+      </ion-list>
+    </div>
+    <ng-template #noFoundedFields>
+      <h2 text-center margin *ngIf="!searching"> {{ isLatvian ?  'Nav atrasti rezultāti!' : 'No results found!' }} </h2>
+    </ng-template>
+  </div>
+  <!--
+  <ng-template #noLatvian2>
+    <div *ngIf="searching" class="spinner-container">
+      <ion-spinner></ion-spinner> Searching
+    </div>
+    <div *ngIf="foundedFields.length > 0; else noFoundedFields ">
+      <ion-list>
+        <ion-item detail *ngFor="let field of foundedFields" [routerLink]="['/', 'field', field.id]" >
+          {{field.titleENG}}
+        </ion-item>
+      </ion-list>
+    </div>
+    <ng-template #noFoundedFields>
+      <h2 text-center margin *ngIf="!searching">No results found!</h2>
+    </ng-template>
+  </ng-template>-->
+</ion-content>

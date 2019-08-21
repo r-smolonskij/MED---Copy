@@ -1,0 +1,48 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>matchingGame</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <h3 padding  *ngIf="correctWord">Choose correct Latvian translation for word:  <i>{{correctWord.wordLV}}</i></h3>
+    <br>
+    <!--
+    <br>
+    <ion-button expand="full"  padding  (click)="myFunc(displayWords[0].id)">{{displayWords[0].wordLV}}</ion-button>
+    <br>
+    <ion-button expand="full"  padding (click)="myFunc(displayWords[1].id)">{{displayWords[1].wordLV}}</ion-button>
+    <br>
+    <ion-button  expand="full"  padding (click)="myFunc(displayWords[2].id)">{{displayWords[2].wordLV}}</ion-button>
+    <br>
+    <ion-button  expand="full"  padding (click)="myFunc(displayWords[3].id)">{{displayWords[3].wordLV}}</ion-button>
+    <br>-->
+
+  </ion-card>
+<!----
+  <ion-row>
+    <ion-col size="12">
+      <ion-buttons slot="start">
+        <ion-button>
+          <ion-icon slot="start" name="add"></ion-icon>
+          {{words[0].wordLV}}
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="start" name="add"></ion-icon>
+          {{word2.wordLV}}
+        </ion-button>
+        <ion-button>
+          <ion-icon slot="start" name="add"></ion-icon>
+          {{word3.wordLV}}
+        </ion-button>
+      </ion-buttons>
+    </ion-col>
+  </ion-row>-->
+
+</ion-content>

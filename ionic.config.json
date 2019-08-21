@@ -1,0 +1,8 @@
+{
+  "name": "MED",
+  "integrations": {
+    "cordova": {},
+    "capacitor": {}
+  },
+  "type": "angular"
+}
